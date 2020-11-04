@@ -724,9 +724,10 @@ open class Floaty: UIView {
   }
   
   @objc open override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-    let within = frame.contains(point) || overlayView.frame.contains(point)
+    let overlayPoint = overlayView.convert(point, from: self)
+    let within = frame.contains(point) || overlayView.frame.contains(overlayPoint)
     
-    print("\(point) \(within ? "WITHIN": "OUTSIDE")")
+    print("\(overlayPoint) \(within ? "WITHIN": "OUTSIDE")")
     
     return within
   }
