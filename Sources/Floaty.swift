@@ -723,6 +723,11 @@ open class Floaty: UIView {
     return super.hitTest(point, with: event)
   }
   
+  open override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+    return frame.contains(point) || overlayView.frame.contains(point)
+  }
+    
+  
   fileprivate func determineTapArea(item : FloatyItem) -> CGRect {
     let tappableMargin : CGFloat = 30.0
     var x : CGFloat?
