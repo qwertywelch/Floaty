@@ -815,6 +815,9 @@ open class Floaty: UIView {
   }
   fileprivate func setOverlayFrame() {
     if let superview = superview {
+      if superview.bounds.height == 0 {
+        return
+      }
       overlayView.frame = CGRect(
         x: 0,y: 0,
         width: superview.bounds.width,
