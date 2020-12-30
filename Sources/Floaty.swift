@@ -727,7 +727,16 @@ open class Floaty: UIView {
     let overlayPoint = overlayView.convert(point, from: self)
     let within = frame.contains(point) || overlayView.frame.contains(overlayPoint)
     
-    print("\(overlayPoint) \(within ? "WITHIN": "OUTSIDE")")
+    if frame.contains(point) {
+      print("\(point) WITHIN regular frame \(frame)")
+    } else {
+      print("\(point) OUTSIDE regular frame \(frame)")
+    }
+    if overlayView.frame.contains(point) {
+      print("\(overlayPoint) WITHIN overlay frame \(overlayView.frame)")
+    } else {
+      print("\(overlayPoint) OUTSIDE overlay frame \(overlayView.frame)")
+    }
     
     return within
   }
